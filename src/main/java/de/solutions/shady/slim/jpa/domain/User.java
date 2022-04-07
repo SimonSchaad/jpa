@@ -1,6 +1,7 @@
 package de.solutions.shady.slim.jpa.domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -13,6 +14,9 @@ public class User {
     private String username;
     @Column(name = "password_Encoded")
     private String passwordEncoded;
+
+    @OneToMany(mappedBy = "user")
+    private List<Attendance> attendances;
 
     public Long getId() {
         return id;
@@ -36,5 +40,9 @@ public class User {
 
     public void setPasswordEncoded(String passwordEncoded) {
         this.passwordEncoded = passwordEncoded;
+    }
+
+    public List<Attendance> getAttendances() {
+        return attendances;
     }
 }
