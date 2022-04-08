@@ -115,8 +115,7 @@ class JpaApplicationTests {
 
         List<User> usersWithoutAttendance = userRepository.findByAttendancesIsEmpty();
 
-        //Optional<User> brigitte = userRepository.findByUsernameStartingWithAndPasswordEncodedEqualsIgnoreCaseAndAttendanceIsNotEmpty("bri", "TREWQ");
-
+        Optional<User> brigitte = userRepository.findByUsernameStartingWithAndPasswordEncodedEqualsIgnoreCaseAndAttendancesIsNotEmpty("bri", "TREWQ");
     }
 
 
