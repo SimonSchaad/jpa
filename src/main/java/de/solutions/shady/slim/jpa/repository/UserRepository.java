@@ -2,6 +2,7 @@ package de.solutions.shady.slim.jpa.repository;
 
 import de.solutions.shady.slim.jpa.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,4 +15,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUsernameStartingWith(String partOfUsername);
 
     List<User> findByAttendancesIsEmpty();
+
+    //Optional<User> findByUsernameStartingWithAndPasswordEncodedEqualsIgnoreCaseAndAttendanceIsNotEmpty(String bri, String trewq);
+
+    //@Query("SELECT u FROM User u WHERE NOT EXISTS (SELECT * FROM Attendance a WHERE a.user = u)")
+    //List<User> getUsersWithoutAttendances();
+
+    /*@Query(value = "SELECT * FROM user WHERE user.id = ....", nativeQuery = true)
+    List<User> complexQuery();*/
 }

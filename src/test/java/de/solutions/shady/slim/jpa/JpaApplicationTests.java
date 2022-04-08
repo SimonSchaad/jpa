@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -95,10 +96,10 @@ class JpaApplicationTests {
     @Test
     public void testUserRepo() {
         User user = new User();
-        user.setUsername("brigitte.mustermann");
+        user.setUsername("brigitte.musterfrau");
         user.setPasswordEncoded("trewq");
 
-        user =userRepository.save(user);
+        user = userRepository.save(user);
         assertNotNull(user.getId());
         assertTrue(user.getId() > 0);
 
@@ -113,7 +114,11 @@ class JpaApplicationTests {
         List<User> users = userRepository.findByUsernameStartingWith("bri");
 
         List<User> usersWithoutAttendance = userRepository.findByAttendancesIsEmpty();
+
+        //Optional<User> brigitte = userRepository.findByUsernameStartingWithAndPasswordEncodedEqualsIgnoreCaseAndAttendanceIsNotEmpty("bri", "TREWQ");
+
     }
+
 
 
 }
