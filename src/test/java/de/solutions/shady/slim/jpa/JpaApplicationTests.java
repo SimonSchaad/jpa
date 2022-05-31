@@ -3,11 +3,9 @@ package de.solutions.shady.slim.jpa;
 import de.solutions.shady.slim.jpa.domain.Attendance;
 import de.solutions.shady.slim.jpa.domain.User;
 import de.solutions.shady.slim.jpa.repository.UserRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -17,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class JpaApplicationTests {
@@ -85,7 +84,7 @@ class JpaApplicationTests {
         assertNotNull(attendanceFromDb.getUser());
         assertEquals("Max.Muster", attendanceFromDb.getUser().getUsername());
 
-        //entityManager.refresh(user);
+        entityManager.refresh(user);
         assertEquals(1, user.getAttendances().size());
 
         //entityManager.clear();
@@ -117,7 +116,6 @@ class JpaApplicationTests {
 
         Optional<User> brigitte = userRepository.findByUsernameStartingWithAndPasswordEncodedEqualsIgnoreCaseAndAttendancesIsNotEmpty("bri", "TREWQ");
     }
-
 
 
 }
