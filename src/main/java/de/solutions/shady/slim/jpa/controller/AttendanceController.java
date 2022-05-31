@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -25,7 +26,7 @@ public class AttendanceController {
     @Autowired
     private UserRepository userRepository;
 
-    //_______________________________CRUD API____________________________________
+    //_______________________________CRUD (Create (Post), Read (Get), Update (Put), Delete (Delete)) API____________________________________
     @GetMapping
     public List<Attendance> getAttendance() {
         return attendanceRepository.findAll();

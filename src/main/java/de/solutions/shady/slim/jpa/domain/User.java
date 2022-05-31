@@ -1,5 +1,7 @@
 package de.solutions.shady.slim.jpa.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class User {
     private String passwordEncoded;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Attendance> attendances;
 
     public Long getId() {
