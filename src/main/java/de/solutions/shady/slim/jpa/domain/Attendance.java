@@ -17,6 +17,7 @@ public class Attendance {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private User user;
 
 
